@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>  DATE </title>
+
+    <style>
+        body{
+            background-color:#ffcccc;
+            background-image: linear-gradient(43deg,#ffb3b3 ,#ecb3ff, #FFCC70 100%);
+            height: 100vh;
+        }
+        .title{
+            text-align: center;
+            margin-top: 20px;
+            
+        }
+        .container{
+            height: 400px; 
+            width: 500px;
+            display: block;
+            margin: 20px auto;
+            background-color:#ccffff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px 1px #cde6ff;
+            padding: 50px;
+        }
+        .input-lable{
+            font-size: 25px;
+            text-align: center;
+            color:black;
+        }
+        .input-field{
+            font-size: 25px;
+            border: 1px solid black;
+            border-radius: 6px;
+            margin: 20px 0 20px 40px;
+        }
+        .input2{
+            font-size: 27px;
+            border: 1px solid black;
+            border-radius: 5px;
+            margin: 50px 0 20px 80px;
+        }
+        .cal_btn{
+            font-size: 25px;
+            display: block;
+            margin: 30px auto;
+            border: 4px solid black;
+            border-radius: 20px;
+            background-color: white;
+            padding: 8px 10px;
+        }
+        .diff-date{
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+            margin-top: 50px;
+            color:black;
+;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title"> DEFFRENCE BETWEEN DATE-TIME</h1>
+    <div class="container">
+        <label class="input-lable">Enter Current Date:</label>
+        <input type="date" id="current_date" class="input-field" /><br>
+
+        <label for="old-date" class="input-lable">Enter Old Date:</label>
+        <input type="date" id="old-date" class="input2" /><br>
+
+        <button type="button" class="cal_btn" onclick="calDifference()">
+            Calculate
+        </button>
+
+        <div id="diff-date" class="diff-date">
+            Difference Between Two Dates :
+        </div>
+    </div>
+    
+    <script>
+        function calDifference(){
+            const currentDateInput= document.getElementById('current_date').value;
+            const currentDate= new Date(currentDateInput);
+            const oldDateInput= document.getElementById('old-date').value;
+            const oldDate= new Date(oldDateInput);
+            const difference= document.getElementById('diff-date');
+ 
+            let dateDiff= currentDate.getFullYear() - oldDate.getFullYear();
+            let monthDiff= currentDate.getMonth() - oldDate.getMonth();
+
+            if(monthDiff < 0 || (monthDiff === 0 && currentDate.getDate() < oldDate.getDate()))
+            {
+                dateDiff--;
+            }
+
+            difference.innerText= `Difference Between Two Dates : ${dateDiff}`;
+        }
+    </script>
+
+</body>
+</html>
